@@ -35,6 +35,12 @@ def test_bug3_total_com_desconto_subtrai_o_desconto():
     assert pedido.total_com_desconto(10) == 90.0
 
 
+def test_bug4_frete_gratis_com_subtotal_exatamente_50():
+    # valor-limite: a partir de 50,00 (inclusive) o frete é grátis
+    pedido = Pedido("Carla", [Item("Combo", 50.0, 1)])
+    assert pedido.tem_frete_gratis() is True
+
+
 
 # =============================================================
 # PARTE 2 — Implemente com TDD
