@@ -86,6 +86,11 @@ def test_situacao_confirmado_com_frete_gratis(pedido_grande):
     assert pedido_grande.situacao(0) == "Confirmado com frete grátis"
 
 
+def test_situacao_confirmado_sem_frete_gratis(pedido_pequeno):
+    # pedido_pequeno: 15,00 (sem frete grátis) e nenhuma unidade indisponível
+    assert pedido_pequeno.situacao(0) == "Confirmado"
+
+
 
 # Requisito 3 — sugerir_frete_gratis(sms_service) -> None
 # Use MagicMock para simular o serviço de SMS
