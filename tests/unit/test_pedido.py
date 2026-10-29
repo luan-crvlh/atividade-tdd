@@ -23,6 +23,11 @@ def test_bug1_subtotal_considera_quantidade(pedido_pequeno):
     assert pedido_pequeno.subtotal() == 15.0
 
 
+def test_bug2_item_mais_barato_retorna_menor_preco(pedido_pequeno):
+    # café custa 6,00 e o pão de queijo 4,50 → o mais barato é o pão de queijo
+    assert pedido_pequeno.item_mais_barato().nome == "Pão de queijo"
+
+
 
 # =============================================================
 # PARTE 2 — Implemente com TDD
