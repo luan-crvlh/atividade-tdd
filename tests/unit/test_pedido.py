@@ -97,6 +97,12 @@ def test_situacao_exatamente_25_porcento_segue_para_o_frete():
     assert pedido.situacao(1) == "Confirmado com frete grátis"
 
 
+def test_situacao_pouco_acima_de_25_porcento_cancela():
+    # 7 unidades, 70,00 (frete grátis); 2 indisponíveis ≈ 28,6% > 25% → cancela
+    pedido = Pedido("Carla", [Item("Combo", 10.0, 7)])
+    assert pedido.situacao(2) == "Cancelado por falta de estoque"
+
+
 
 # Requisito 3 — sugerir_frete_gratis(sms_service) -> None
 # Use MagicMock para simular o serviço de SMS
