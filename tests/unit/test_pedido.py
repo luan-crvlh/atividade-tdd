@@ -91,6 +91,12 @@ def test_situacao_confirmado_sem_frete_gratis(pedido_pequeno):
     assert pedido_pequeno.situacao(0) == "Confirmado"
 
 
+def test_situacao_exatamente_25_porcento_segue_para_o_frete():
+    # 4 unidades, 60,00 (frete grátis); 1 indisponível = exatamente 25% → não cancela
+    pedido = Pedido("Carla", [Item("Combo", 15.0, 4)])
+    assert pedido.situacao(1) == "Confirmado com frete grátis"
+
+
 
 # Requisito 3 — sugerir_frete_gratis(sms_service) -> None
 # Use MagicMock para simular o serviço de SMS
