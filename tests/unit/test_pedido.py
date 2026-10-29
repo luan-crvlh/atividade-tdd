@@ -62,6 +62,12 @@ def test_contar_frete_gratis_nenhum_com_frete_gratis(pedido_pequeno):
     assert contar_frete_gratis([pedido_pequeno, pedido_49]) == 0
 
 
+def test_contar_frete_gratis_lista_mista(pedido_pequeno, pedido_grande):
+    # pedido_grande (73,00) e combo (50,00) têm frete grátis; pedido_pequeno (15,00) não
+    pedido_50 = Pedido("Carla", [Item("Combo", 50.0, 1)])
+    assert contar_frete_gratis([pedido_pequeno, pedido_grande, pedido_50]) == 2
+
+
 
 # Requisito 2 — situacao(unidades_indisponiveis) -> str
 # Escreva os testes ANTES de implementar o método
