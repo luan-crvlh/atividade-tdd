@@ -32,4 +32,4 @@ class Pedido:
         return self.subtotal() - self.subtotal() * percentual / 100
 
 def contar_frete_gratis(pedidos: list) -> int:
-    pass
+    return len(pedidos)
