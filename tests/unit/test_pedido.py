@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import MagicMock
-from pedido.pedido import Item, Pedido
+from pedido.pedido import Item, Pedido, contar_frete_gratis
 
 
 # =============================================================
@@ -49,6 +49,11 @@ def test_bug4_frete_gratis_com_subtotal_exatamente_50():
 
 # Requisito 1 — contar_frete_gratis(pedidos) -> int
 # Escreva os testes ANTES de implementar a função
+
+def test_contar_frete_gratis_todos_com_frete_gratis(pedido_grande):
+    # pedido_grande: 73,00 / combo: exatamente 50,00 → os 2 têm frete grátis
+    pedido_50 = Pedido("Carla", [Item("Combo", 50.0, 1)])
+    assert contar_frete_gratis([pedido_grande, pedido_50]) == 2
 
 
 
